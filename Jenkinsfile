@@ -12,7 +12,7 @@ pipeline {
 
         stage('Verificar Python') {
             steps {
-                bat 'python --version'
+                bat '"C:\\Users\\LENOVO 520 PENTIUM\\AppData\\Local\\Python\\bin\\python.exe" --version'
             }
         }
 

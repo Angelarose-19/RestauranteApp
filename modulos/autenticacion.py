@@ -5,7 +5,7 @@ usuarios = {
 
 def login(usuario, contrasena):
     if usuario in usuarios and usuarios[usuario] == contrasena:
-        print(f"✅ Usuario '{usuario}' autenticado correctamente.")
+        print(f"Usuario '{usuario}' autenticado correctamente.")
         return True
-    print("❌ Credenciales incorrectas.")
+    print("x Credenciales incorrectas.")
     return False

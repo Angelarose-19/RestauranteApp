@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        PYTHON = '"C:\\Users\\LENOVO 520 PENTIUM\\AppData\\Local\\Python\\bin\\python.exe"'
+    }
+
     stages {
 
         stage('Clonar Repositorio') {
@@ -12,28 +16,28 @@ pipeline {
 
         stage('Verificar Python') {
             steps {
-                bat '"C:\\Users\\LENOVO 520 PENTIUM\\AppData\\Local\\Python\\bin\\python.exe" --version'
+                bat "%PYTHON% --version"
             }
         }
 
         stage('Instalar Dependencias') {
             steps {
                 echo 'Instalando dependencias...'
-                bat 'pip install pytest'
+                bat "%PYTHON% -m pip install pytest"
             }
         }
 
         stage('Ejecutar Pruebas') {
             steps {
                 echo 'Ejecutando pruebas unitarias...'
-                bat 'python -m unittest tests.py -v'
+                bat "%PYTHON% -m unittest tests.py -v"
             }
         }
 
         stage('Empaquetar') {
             steps {
                 echo 'Empaquetando aplicacion...'
-                bat 'python -m zipfile -c RestauranteApp.zip main.py modulos/'
+                bat "%PYTHON% -m zipfile -c RestauranteApp.zip main.py modulos/"
                 echo 'Artefacto generado: RestauranteApp.zip'
             }
         }
@@ -41,7 +45,7 @@ pipeline {
         stage('Despliegue Simulado') {
             steps {
                 echo 'Desplegando en ambiente de staging...'
-                echo 'Aplicacion desplegada exitosamente en staging!'
+                echo 'Aplicacion desplegada exitosamente!'
             }
         }
     }

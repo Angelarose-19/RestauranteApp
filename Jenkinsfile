@@ -42,12 +42,12 @@ pipeline {
             }
         }
 
-        stage('Despliegue Simulado') {
+       stage('Despliegue Staging') {
             steps {
-                echo 'Desplegando en ambiente de staging...'
-                echo 'Aplicacion desplegada exitosamente!'
-            }
-        }
+               echo 'Iniciando despliegue en staging...'
+               bat 'deploy.bat'
+       }
+     }
     }
 
     post {
